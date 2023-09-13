@@ -1,0 +1,17 @@
+.fade {
+  /* top: 56px; */
+}
+
+.modal-dialog {
+  height: 92vh;
+}
+
+.modal-content {
+  height: 96vh;
+  background: transparent;
+  border: none;
+}
+
+.spinner-border {
+  margin-top: 50%;
+}

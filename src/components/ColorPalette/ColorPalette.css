@@ -1,0 +1,33 @@
+.color {
+  border-radius: 50%;
+  border: 1px solid #606060;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.selectedColor {
+  border-radius: 50%;
+  border: 2px solid white;
+  width: 24px;
+  height: 24px;
+}
+.color:hover {
+  border: 1px solid white;
+}
+
+.green {
+  background: rgb(15, 70, 15);
+}
+
+.gray {
+  background-color: gray;
+}
+
+.blue {
+  background-color: rgb(21, 21, 100);
+}
+
+.red {
+  background-color: rgb(97, 36, 13);
+}
