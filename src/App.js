@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import TextBox from './components/TextBox/TextBox';
 import Alert from './components/Alert/Alert';
+import About from './components/About/About';
 
 function App() {
 
@@ -50,6 +51,7 @@ function App() {
       {!alertMsg && <div style={{height:'49.5px'}}></div> }
       {alertMsg && <Alert type={alertType} msg={alertMsg} />}
       <TextBox themeMode={mode} themeColor={themeColor} showAlert={showAlert} />
+      {/* <About themeMode={mode} themeColor={themeColor} /> */}
      </div>
     </div>
     </>

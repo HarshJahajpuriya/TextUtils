@@ -75,7 +75,7 @@ const TextBox = function (props) {
   }
 
   const extractEmails = () => {
-    var splits = text.split(" ");
+    let splits = text.split(" ");
     let result = splits.map(split => split.match("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")) 
     let mails = [];
     result.forEach(tmp => {
