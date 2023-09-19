@@ -112,7 +112,7 @@ const About = (props) => {
                     data-target="collapseTwo"
                     aria-expanded="false"
                     aria-controls="collapseTwo"
-                    style={{ height: '20px', width: '20px' }} src="./plus-lg.png"
+                    style={{ height: '20px', width: '20px' }} src="public/plus-lg.png"
                   />
                 }
                 {
@@ -122,7 +122,7 @@ const About = (props) => {
                     data-target="collapseTwo"
                     aria-expanded="false"
                     aria-controls="collapseTwo"
-                    style={{ height: '20px', width: '20px' }} src="./dash-lg.png"
+                    style={{ height: '20px', width: '20px' }} src="public/dash-lg.png"
                   />
                 }
               </button>
