@@ -9,9 +9,13 @@ const About = (props) => {
     setPanel(document.getElementById(ev.target.attributes.getNamedItem('data-target').value));
     document.getElementById(ev.target.attributes.getNamedItem('data-target').value).classList.add('show');
   }
+  const closePanel = (ev) => {
+    setPanel(null);
+    document.getElementById(ev.target.attributes.getNamedItem('data-target')?.value).classList.remove('show');
+  }
 
   return <>
-    <div className="container" style={{color: props.themeMode==='light'?'':'whitesmoke'}}>
+    <div className="container" style={{ color: props.themeMode === 'light' ? '' : 'whitesmoke' }}>
       <div className="m-2 my-3">
         <h2 >Welcome to TextUtils - Your Text Manipulation Toolkit</h2>
         <div>
@@ -25,22 +29,47 @@ const About = (props) => {
       </div>
       <div className="accordion" id="accordionExample">
         <div className="card">
-          <div 
-            className="card-header" 
+          <div
+            className="card-header"
             id="headingOne"
-            style={{background: props.themeMode==='light'?'whitesmoke': props.themeColor}}
+            style={{ background: props.themeMode === 'light' ? 'whitesmoke' : props.themeColor, height: '50px' }}
           >
-            <h2 className="mb-0">
-              <button onClick={openPanel} className={`btn btn-link text-${props.themeMode==='light'?'dark':'light'}`} style={{ color: "#183755",  textDecoration: 'none' }} type="button" data-toggle="collapse" data-target="collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                What Can You Do with TextUtils?
-              </button>
-            </h2>
+            <span className="mb-0">
+              What Can You Do with TextUtils?
+            </span>
+            <button
+              className={`btn btn-link text-${props.themeMode === 'light' ? 'dark' : 'light'} pt-0`}
+              style={{ color: "#183755", textDecoration: 'none', float: 'right' }}
+              type="button"
+            >
+              {
+                panel?.id!=='collapseOne' && <img
+                  onClick={openPanel}
+                  data-toggle="collapse"
+                  data-target="collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                  style={{ height: '20px', width: '20px' }} src="./plus-lg.png"
+                />
+              }
+              
+              {
+                panel?.id==='collapseOne' && <img
+                  onClick={closePanel}
+                  data-toggle="collapse"
+                  data-target="collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                  style={{ height: '20px', width: '20px' }} src="./dash-lg.png"
+                />
+              }
+            </button>
           </div>
 
-          <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-            <div 
-              className="card-body" 
-              style={{background: props.themeMode==='light'?'white': props.themeColor+'90'}}
+          <div id="collapseOne" className='collapse' aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div
+              className="card-body"
+              style={{ background: props.themeMode === 'light' ? 'white' : props.themeColor + '90' }}
             >
               <ul>
                 <li>
@@ -63,21 +92,47 @@ const About = (props) => {
           </div>
         </div>
         <div className="card">
-          <div 
-            className="card-header" 
+          <div
+            className="card-header"
             id="headingTwo"
-            style={{background: props.themeMode==='light'?'whitesmoke': props.themeColor}}
+            style={{ background: props.themeMode === 'light' ? 'whitesmoke' : props.themeColor, height: '50px' }}
           >
-            <h2 className="mb-0">
-              <button onClick={openPanel} className={`btn btn-link text-${props.themeMode==='light'?'dark':'light'}`} style={{ color: "#183755",  textDecoration: 'none' }} type="button" data-toggle="collapse" data-target="collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <span className="mb-0">
+              <span className={`text-${props.themeMode === 'light' ? 'dark' : 'light'}`} >
                 Why Choose TextUtils?
+              </span>
+              <button
+                className={`btn btn-link text-${props.themeMode === 'light' ? 'dark' : 'light'} pt-0`}
+                style={{ color: "#183755", textDecoration: 'none', float: 'right' }}
+              >
+                {
+                  panel?.id!=='collapseTwo' && <img
+                    onClick={openPanel}
+                    data-toggle="collapse"
+                    data-target="collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="collapseTwo"
+                    style={{ height: '20px', width: '20px' }} src="./plus-lg.png"
+                  />
+                }
+                {
+                  panel?.id==='collapseTwo' && <img
+                    onClick={closePanel}
+                    data-toggle="collapse"
+                    data-target="collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="collapseTwo"
+                    style={{ height: '20px', width: '20px' }} src="./dash-lg.png"
+                  />
+                }
               </button>
-            </h2>
+
+            </span>
           </div>
           <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-            <div 
+            <div
               className="card-body"
-              style={{background: props.themeMode==='light'?'white': props.themeColor+'90'}}
+              style={{ background: props.themeMode === 'light' ? 'white' : props.themeColor + '90' }}
             >
               <ul>
                 <li>

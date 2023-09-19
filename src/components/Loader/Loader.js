@@ -7,14 +7,6 @@ const Loader = (props) => {
 
   const [loading, setLoading] = React.useState(true);
 
-  const show = () => {
-    setLoading(true);
-  }
-
-  const hide = () => {
-    setLoading(false);
-  }
-
   return <>
     <Modal show={loading}>
       <div className={`text-center align-middle h-100 text-light`}>

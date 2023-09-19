@@ -13,16 +13,6 @@ const TextBox = function (props) {
   const [errorCounts, setErrorCounts] = React.useState(0);
   const [errors, setErrors] = React.useState([]);
   const [mailIds, setMailIds] = React.useState([]);
-  const [wordsCount, setWordsCount] = React.useState(0);
-
-  React.useEffect(() => {
-    let words = text.split(" ");
-    let count = 0;
-    for(let word of words) {
-      if(word.length !== 0) count++;
-    }
-    setWordsCount(count);
-  }, [text])
 
   const options = {
     method: 'POST',
@@ -158,15 +148,15 @@ const TextBox = function (props) {
       ></textarea>
       <br />
       <fieldset className="d-flex justify-content-end text-secondary">
-        <button className="btn btn-sm btn-dark mx-1 checkBtn" onClick={clearText}>Clear Text</button>
-        <button className="btn btn-sm btn-dark mx-1 checkBtn" onClick={copyToClipboard}>Copy To Clipboard</button>
+        <button className="btn btn-sm btn-dark mx-1" disabled={text.length===0} onClick={clearText}>Clear Text</button>
+        <button className="btn btn-sm btn-dark mx-1" disabled={text.length===0} onClick={copyToClipboard}>Copy To Clipboard</button>
         <span className="py-2 mx-2" style={{color: props.themeMode==='light'?'gray':'whitesmoke'}}>
-          {wordsCount} <i>&nbsp;WORDS&nbsp; & &nbsp;</i>{text.length} <i>&nbsp;Characters</i>
+          {text.split(" ").filter((el)=>el.length!==0).length} <i>&nbsp;WORDS&nbsp; & &nbsp;</i>{text.length} <i>&nbsp;Characters</i>
         </span>
       </fieldset>
       <fieldset className={`border border-${props.themeMode==='light'?'gray':'whitesmoke'} p-2 my-2 d-flex`}>
         <legend className="border-0 text-center" style={{color: props.themeMode==='light'?'gray':'whitesmoke'}}>SPELL-CHECKER</legend>
-        <button className="btn btn-sm btn-dark mx-1 checkBtn" onClick={checkGrammar}>Check</button>
+        <button className="btn btn-sm btn-dark mx-1 myBtn" disabled={text.length===0} onClick={checkGrammar}>Check</button>
         <span className="mx-1 p-1 text-danger"><b>Errors: {errorCounts}</b></span>
         <span className="mx-1 p-2" style={{color: props.themeMode==='light'?'gray':'whitesmoke'}}>Suggestions: {errors.map(error => {
           return <div key={error.position}>
@@ -178,21 +168,21 @@ const TextBox = function (props) {
       </fieldset>
       <fieldset className={`border border-${props.themeMode==='light'?'gray':'whitesmoke'} p-2 my-2 d-flex`}>
         <legend className="border-0 text-center" style={{color: props.themeMode==='light'?'gray':'whitesmoke'}}>EMAIL-EXTRACTOR</legend>
-        <button className="btn btn-sm btn-dark mx-1 checkBtn flex-start" onClick={extractEmails}>Extract</button>
+        <button className="btn btn-sm btn-dark mx-1 myBtn flex-start" disabled={text.length===0} onClick={extractEmails}>Extract</button>
         <span className="mx-1 p-2" style={{color: props.themeMode==='light'?'gray':'whitesmoke'}}><b>E-mail IDs: &nbsp;</b>{mailIds.map(mailId => {
           if(mailIds) {
             return <span key={mailId?.input} style={{color: props.themeMode==='light'?'gray':'whitesmoke'}}>{mailId?.input}&emsp;</span>
           } return null;
         })}</span>
       </fieldset>
-      <fieldset className={`border border-${props.themeMode==='light'?'gray':'whitesmoke'} p-2 my-2 d-flex justify-content-around`}>
+      <fieldset className={`border border-${props.themeMode==='light'?'gray':'whitesmoke'} p-2 my-2 d-flex justify-content-around`} style={{'flexWrap': 'wrap'}}>
         <legend className="border-0 text-center" style={{color: props.themeMode==='light'?'gray':'whitesmoke'}}>CASES</legend>
-        <button className="btn btn-sm btn-dark mx-1" onClick={toUpperCase}>UPPER CASE</button>
-        <button className="btn btn-sm btn-dark mx-1" onClick={toLowerCase}>lower case</button>
-        <button className="btn btn-sm btn-dark mx-1" onClick={toSnakeCase}>Snake_Case</button>
-        <button className="btn btn-sm btn-dark mx-1" onClick={toKebabCase}>Kebab-Case</button>
-        <button className="btn btn-sm btn-dark mx-1" onClick={toPascalCase}>PascalCase</button>
-        <button className="btn btn-sm btn-dark mx-1" onClick={toCamelCase}>camelCase</button>
+        <button className="btn btn-sm btn-dark mx-1 my-1" disabled={text.length===0} onClick={toUpperCase}>UPPER CASE</button>
+        <button className="btn btn-sm btn-dark mx-1 my-1" disabled={text.length===0} onClick={toLowerCase}>lower case</button>
+        <button className="btn btn-sm btn-dark mx-1 my-1" disabled={text.length===0} onClick={toSnakeCase}>Snake_Case</button>
+        <button className="btn btn-sm btn-dark mx-1 my-1" disabled={text.length===0} onClick={toKebabCase}>Kebab-Case</button>
+        <button className="btn btn-sm btn-dark mx-1 my-1" disabled={text.length===0} onClick={toPascalCase}>PascalCase</button>
+        <button className="btn btn-sm btn-dark mx-1 my-1" disabled={text.length===0} onClick={toCamelCase}>camelCase</button>
       </fieldset>
     </div>
   </>
