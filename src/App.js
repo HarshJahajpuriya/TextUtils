@@ -53,7 +53,7 @@ function App() {
           {!alertMsg && <div style={{ height: '49.5px' }}></div>}
           {alertMsg && <Alert type={alertType} msg={alertMsg} />}
           <Routes>
-            <Route exact path='/' element={<TextBox themeMode={mode} themeColor={themeColor} showAlert={showAlert} />} />
+            <Route exact path='/TextUtils' element={<TextBox themeMode={mode} themeColor={themeColor} showAlert={showAlert} />} />
             <Route exact path="/about" element={<About themeMode={mode} themeColor={themeColor} />} />
           </Routes>
         </div>

@@ -23,7 +23,7 @@ const Navbar = function (props) {
         backgroundColor: props.themeMode==='dark'?props.themeColor:'rgb(240,240,240)'
       }}
     >
-      <Link className="navbar-brand" to="/">{props.title}</Link>
+      <Link className="navbar-brand" to="/TextUtils">{props.title}</Link>
       <button onClick={toggleNavBar} className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
@@ -32,7 +32,7 @@ const Navbar = function (props) {
         <ul className="navbar-nav mr-auto">
 
           <li className="nav-item">
-            <Link className="nav-link" to="/">Home</Link>
+            <Link className="nav-link" to="/TextUtils">Home</Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/about">About</Link>
